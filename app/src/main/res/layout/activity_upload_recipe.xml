@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Upload_Recipe">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_foodImage"
+            android:src="@drawable/img_choose"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <EditText
+            android:id="@+id/txt_recipe_name"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:hint="Tên món ăn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txt_recipe_ingredient"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:hint="Nguyên liệu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txt_recipe_cook"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:hint="Cách nấu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="btnChooseImg"
+            android:id="@+id/btn_img_choose"
+            android:layout_marginTop="20dp"
+            android:textSize="22sp"
+            android:text="CHỌN ẢNH"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <Button
+            android:onClick="btnUpload"
+            android:id="@+id/btn_upload"
+            android:layout_marginTop="10dp"
+            android:textSize="22sp"
+            android:text="CHIA SẺ"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+    </LinearLayout>
+
+</ScrollView>
