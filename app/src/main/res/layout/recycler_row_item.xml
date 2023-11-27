@@ -28,6 +28,7 @@
                 android:src="@drawable/img" />
 
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -59,11 +60,12 @@
 <!--                        android:textSize="18dp" />-->
 
 <!--                    <TextView-->
-<!--                        android:id="@+id/tvDescription"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:id="@+id/tvIngredient"-->
 <!--                        android:layout_width="match_parent"-->
 <!--                        android:layout_height="wrap_content"-->
 <!--                        android:maxLines="1"-->
-<!--                        android:text="Description"-->
+<!--                        android:text="Ingredient"-->
 <!--                        android:textSize="18dp" />-->
 
 <!--                </LinearLayout>-->

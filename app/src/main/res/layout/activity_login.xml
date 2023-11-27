@@ -14,7 +14,7 @@
         android:layout_marginBottom="20dp"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:text="Log In"
+        android:text="Đăng nhập"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -27,7 +27,7 @@
             android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Phone Number"
+            android:hint="Số điện thoại"
             android:backgroundTint="#FFFFFF"
             android:inputType="phone"
             android:textSize="20sp" />
@@ -44,7 +44,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:backgroundTint="#FFFFFF"
-            android:hint="Password"
+            android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="#2196F3"
-        android:text="Log In"
+        android:text="Đăng nhập"
         android:textSize="18sp" />
     <LinearLayout
         android:gravity="center"
@@ -65,14 +65,14 @@
 
         <TextView
             android:textStyle="italic"
-            android:text="Don't have an account? "
+            android:text="Chưa có tài khoản "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/btnRegisterNow"
             android:textStyle="bold"
-            android:text="Register now"
+            android:text="Đăng ký"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

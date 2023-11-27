@@ -45,10 +45,10 @@ public class Register extends AppCompatActivity {
                 String fullname = editName.getText().toString();
 
                 if(email.isEmpty() || password.isEmpty() || conPassword.isEmpty() || phone.isEmpty() || fullname.isEmpty()){
-                    Toast.makeText(Register.this, "Please fill all fields!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this, "Vui lòng điền dầy dủ tông tin", Toast.LENGTH_LONG).show();
                 }
                 else if (!password.equals(conPassword)){
-                    Toast.makeText(Register.this, "Password are not matching!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this, "Mật khẩu không khớp", Toast.LENGTH_LONG).show();
                 }
                 else{
                     databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -56,13 +56,13 @@ public class Register extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             //check phone is registered before
                             if(dataSnapshot.hasChild(phone)){
-                                Toast.makeText(Register.this, "Phone is already registered!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Register.this, "Số điện thoại đã đăng ký!", Toast.LENGTH_LONG).show();
                             }else {
                                 databaseReference.child("Users").child(phone).child("Fullname").setValue(fullname);
                                 databaseReference.child("Users").child(phone).child("Email").setValue(email);
                                 databaseReference.child("Users").child(phone).child("Password").setValue(password);
 
-                                Toast.makeText(Register.this, "User registered sucessfully!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Register.this, "Đăng ký thành công", Toast.LENGTH_LONG).show();
                             }
                         }
 

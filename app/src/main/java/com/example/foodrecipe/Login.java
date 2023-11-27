@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity {
                 pwLogin = editTextPw.getText().toString();
 
                 if(phoneLogin.isEmpty() || pwLogin.isEmpty()){
-                    Toast.makeText(Login.this, "Please enter your phone or password!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
                 }else{
                     databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -51,13 +51,13 @@ public class Login extends AppCompatActivity {
                             if(dataSnapshot.hasChild(phoneLogin)){
                                 String getPassword = dataSnapshot.child(phoneLogin).child("Password").getValue(String.class);
                                 if(getPassword.equals(pwLogin)){
-                                    Toast.makeText(Login.this, "Successfully loged in!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(Login.this, MainActivity.class));
                                 }else{
-                                    Toast.makeText(Login.this, "Wrong password!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Login.this, "Sai mật khẩu!", Toast.LENGTH_LONG).show();
                                 }
                             }else{
-                                Toast.makeText(Login.this, "Wrong phone number!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Login.this, "Sai số điên thoại!", Toast.LENGTH_LONG).show();
                             }
                         }
 

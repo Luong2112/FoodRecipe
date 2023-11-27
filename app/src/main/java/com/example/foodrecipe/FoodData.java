@@ -13,7 +13,9 @@ public class FoodData {
         this.itemIngredient = itemIngredient;
         this.itemCook = itemCook;
         this.itemImage = itemImage;
+    }
 
+    public FoodData() {
     }
 
     public String getItemName() {

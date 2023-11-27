@@ -11,6 +11,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -43,23 +44,12 @@ public class Upload_Recipe extends AppCompatActivity {
     ImageView imgFoodChoose;
     Uri imageUrl;
     EditText edName, edIngredient, edCook;
+    ProgressBar progressBar;
 
+    Button btnChooseImage;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Recipes");
     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-    ActivityResultLauncher<Intent> photoPickerLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK){
-                        Intent data = result.getData();
-                        imageUrl = data.getData();
-                        imgFoodChoose.setImageURI(imageUrl);
-                    }else {
-                        Toast.makeText(Upload_Recipe.this, "Không có ảnh!", Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,14 +59,34 @@ public class Upload_Recipe extends AppCompatActivity {
         edName = findViewById(R.id.txt_recipe_name);
         edIngredient = findViewById(R.id.txt_recipe_ingredient);
         edCook = findViewById(R.id.txt_recipe_cook);
+        btnChooseImage = findViewById(R.id.btn_img_choose);
 
-    }
+        progressBar = new ProgressBar(this);
 
-    public void btnChooseImg(View view) {
-        Intent photoPicker = new Intent();
-        photoPicker.setAction(Intent.ACTION_GET_CONTENT);
-        photoPicker.setType("image/*");
-        photoPickerLauncher.launch(photoPicker);
+        ActivityResultLauncher<Intent> photoPickerLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK){
+                            Intent data = result.getData();
+                            imageUrl = data.getData();
+                            imgFoodChoose.setImageURI(imageUrl);
+                        }else {
+                            Toast.makeText(Upload_Recipe.this, "Không có ảnh!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+        btnChooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent photoPicker = new Intent();
+                photoPicker.setAction(Intent.ACTION_GET_CONTENT);
+                photoPicker.setType("image/*");
+                photoPickerLauncher.launch(photoPicker);
+            }
+        });
+
     }
 
     public void uploadImage() {
