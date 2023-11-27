@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,17 +31,19 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         if(intent != null){
-            try {
+            Toast.makeText(DetailActivity.this, intent.getStringExtra("Image"), Toast.LENGTH_LONG).show();
                 Glide.with(DetailActivity.this)
                         .load(intent.getStringExtra("Image"))
                         .into(this.FoodImage);
-            } catch (Exception e) {
-                Toast.makeText(this,  e.getMessage(), Toast.LENGTH_LONG).show();
-            }
 
             txtName.setText(intent.getStringExtra("Name"));
             txtIngredient.setText(intent.getStringExtra("Ingredient"));
             txtCook.setText(intent.getStringExtra("Cook"));
         }
+    }
+
+    public void btnFavorite(View view) {
+        Intent intent = getIntent();
+        String phone = intent.getStringExtra("Phone");
     }
 }

@@ -3,6 +3,7 @@ package com.example.foodrecipe;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -61,8 +62,10 @@ public class Register extends AppCompatActivity {
                                 databaseReference.child("Users").child(phone).child("Fullname").setValue(fullname);
                                 databaseReference.child("Users").child(phone).child("Email").setValue(email);
                                 databaseReference.child("Users").child(phone).child("Password").setValue(password);
+                                databaseReference.child("Users").child(phone).child("PhoneNumber").setValue(phone);
 
                                 Toast.makeText(Register.this, "Đăng ký thành công", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(Register.this, Login.class));
                             }
                         }
 

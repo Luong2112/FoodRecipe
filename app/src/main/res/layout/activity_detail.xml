@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/img" />
+        android:src="@drawable/img"/>
 
     <LinearLayout
         android:weightSum="10"
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:onClick="btnFavorite"
             android:id="@+id/like"
             android:layout_gravity="center"
             android:layout_weight="9"

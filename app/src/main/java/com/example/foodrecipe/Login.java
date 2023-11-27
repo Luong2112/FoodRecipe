@@ -44,15 +44,23 @@ public class Login extends AppCompatActivity {
                 if(phoneLogin.isEmpty() || pwLogin.isEmpty()){
                     Toast.makeText(Login.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
                 }else{
-                    databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             // check phone is exist in firebase
                             if(dataSnapshot.hasChild(phoneLogin)){
                                 String getPassword = dataSnapshot.child(phoneLogin).child("Password").getValue(String.class);
                                 if(getPassword.equals(pwLogin)){
-                                    Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(Login.this, User.class);
+                                    intent.putExtra("Phone", phoneLogin);
+                                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+
+                                    Intent intent1 = new Intent(Login.this, User.class);
+                                    intent1.putExtra("Phone", phoneLogin);
+                                    startActivity(intent1);
                                     startActivity(new Intent(Login.this, MainActivity.class));
+                                    //Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                                 }else{
                                     Toast.makeText(Login.this, "Sai mật khẩu!", Toast.LENGTH_LONG).show();
                                 }
@@ -66,6 +74,7 @@ public class Login extends AppCompatActivity {
 
                         }
                     });
+
                 }
             }
         });

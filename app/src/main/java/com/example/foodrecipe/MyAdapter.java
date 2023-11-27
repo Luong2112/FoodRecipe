@@ -2,6 +2,7 @@ package com.example.foodrecipe;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -38,6 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
         Glide.with(mContext).load(myFoodList.get(position).getItemImage()).into(holder.imageView);
+        //Picasso.get().load(myFoodList.get(position).getItemImage()).into(holder.imageView);
         holder.mTitle.setText(myFoodList.get(position).getItemName());
 //        holder.mIngredient.setText(myFoodList.get(position).getItemIngredient());
 //        holder.mCook.setText(myFoodList.get(position).getItemCook());
